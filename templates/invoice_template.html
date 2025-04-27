@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Invoice</title>
+    <style>
+        body {
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            margin: 40px;
+            background-color: #fff;
+            color: #333;
+        }
+
+        .header {
+            border-bottom: 2px solid #007bff;
+            padding-bottom: 10px;
+            margin-bottom: 30px;
+        }
+
+        .header h1 {
+            margin: 0;
+            font-size: 28px;
+            color: #007bff;
+        }
+
+        .contact-info {
+            font-size: 14px;
+            margin-top: 5px;
+        }
+
+        .section {
+            margin-bottom: 30px;
+        }
+
+        h2 {
+            font-size: 18px;
+            margin-bottom: 10px;
+            color: #444;
+        }
+
+        p {
+            margin: 2px 0;
+            font-size: 14px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+
+        th, td {
+            padding: 10px;
+            border: 1px solid #ccc;
+        }
+
+        th {
+            background-color: #f0f0f0;
+            text-align: left;
+        }
+
+        .text-right {
+            text-align: right;
+        }
+
+        .footer {
+            font-size: 12px;
+            color: #777;
+            margin-top: 50px;
+            border-top: 1px solid #ccc;
+            padding-top: 10px;
+        }
+    </style>
+    
+    <script>
+	  gtag('event', 'invoice_generated', {
+    	'event_category': 'Invoices',
+	    'event_label': '{{ data.client_name }}',
+    	'value': {{ data.total | int }}
+	  });
+	</script>
+
+</head>
+<body>
+    <div class="header">
+        <h1>{{ data.business_name }}</h1>
+        <div class="contact-info">
+            {% if data.business_email %}<p>Email: {{ data.business_email }}</p>{% endif %}
+            {% if data.business_phone %}<p>Phone: {{ data.business_phone }}</p>{% endif %}
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>Invoice Details</h2>
+        <p><strong>Invoice Number:</strong> {{ data.invoice_number }}</p>
+        <p><strong>Issue Date:</strong> {{ data.issue_date }}</p>
+        <p><strong>Due Date:</strong> {{ data.due_date }}</p>
+    </div>
+
+    <div class="section">
+        <h2>Client Information</h2>
+        <p><strong>Name:</strong> {{ data.client_name }}</p>
+        <p><strong>Email:</strong> {{ data.client_email }}</p>
+        <p><strong>Address:</strong> {{ data.client_address }}</p>
+    </div>
+
+    <div class="section">
+        <h2>Line Items</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th style="width: 55%">Description</th>
+                    <th style="width: 15%">Rate<br>({{ data.currency }}/hr)</th>
+                    <th style="width: 15%"># hours</th>
+                    <th style="width: 15%">Total<br>({{ data.currency }})</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for item in data.line_items %}
+                <tr>
+                    <td>{{ item.description }}</td>
+                    <td class="text-left">{{ "%.2f"|format(item.rate) }}</td>
+                    <td class="text-left">{{ "%.2f"|format(item.quantity) }}</td>
+                    <td class="text-left">{{ "%.2f"|format(item.total) }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    {% if data.materials %}
+    <div class="section">
+        <h2>Materials</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th style="width: 85%">Description</th>
+                    <th style="width: 15%">Cost ({{ data.currency }})</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for material in data.materials %}
+                <tr>
+                    <td>{{ material.description }}</td>
+                    <td class="text-left">{{ "%.2f"|format(material.cost) }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    {% endif %}
+
+    <div class="section">
+        <h2>Invoice Summary</h2>
+        <table>
+            <tr>
+                <td style="width: 85%;"><strong>Line Items subtotal</strong></td>
+                <td class="text-left">{{ data.currency }}{{ "%.2f"|format(data.subtotal) }}</td>
+            </tr>
+            <tr>
+                <td style="width: 85%;"><strong>VAT on Line Items ({{ data.vat_percentage }}%)</strong></td>
+                <td class="text-left">{{ data.currency }}{{ "%.2f"|format(data.vat_on_line_items) }}</td>
+            </tr>
+            {% if data.materials %}
+            <tr>
+                <td style="width: 15%;"><strong>Materials subtotal</strong></td>
+                <td class="text-left">{{ data.currency }}{{ "%.2f"|format(data.materials_total) }}</td>
+            </tr>
+            <tr>
+                <td style="width: 15%;"><strong>VAT on Materials ({{ data.vat_percentage }}%)</strong></td>
+                <td class="text-left">{{ data.currency }}{{ "%.2f"|format(data.vat_on_materials) }}</td>
+            </tr>
+            {% endif %}
+            <tr>
+                <th style="width: 15%">Total</th>
+                <th class="text-left">{{ data.currency }}{{ "%.2f"|format(data.total) }}</th>
+            </tr>
+        </table>
+    </div>
+
+    <div class="footer">
+    	<p>Payment details (EFT):</p>
+        <p>Bank: {{ data.bank_name }}</p>
+        <p>Account: {{ data.account_number }}</p>
+    </div>
+</body>
+</html>

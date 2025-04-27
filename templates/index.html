@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Invoice Generator</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f8f9fa;
+            margin: 40px auto;
+            max-width: 800px;
+            padding: 20px;
+            color: #333;
+        }
+
+        h1, h3 {
+            color: #007bff;
+        }
+
+        form {
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+
+        input, textarea, select {
+            width: 100%;
+            padding: 10px;
+            margin-top: 6px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+
+        .line-item, .material-item {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+
+        .line-item input, .material-item input {
+            flex: 1;
+        }
+
+        button {
+            background-color: #007bff;
+            border: none;
+            color: white;
+            padding: 10px 16px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            margin: 10px 0;
+            font-size: 14px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        label {
+            font-weight: bold;
+            display: block;
+            margin-top: 10px;
+        }
+
+        hr {
+            border: none;
+            border-top: 1px solid #ddd;
+            margin: 30px 0;
+        }
+    </style>
+    
+    <!-- Google tag (gtag.js) -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=G-5Q1L6DR24L"></script>
+	<script>
+	  window.dataLayer = window.dataLayer || [];
+	  function gtag(){dataLayer.push(arguments);}
+	  gtag('js', new Date());
+
+	  gtag('config', 'G-5Q1L6DR24L');
+	</script>
+
+</head>
+<body>
+    <h1>Create Invoice</h1>
+    <form action="/generate_invoice" method="POST">
+        <h3>Business Info</h3>
+        <input type="text" name="business_name" placeholder="Your Business Name" required>
+        <input type="email" name="business_email" placeholder="Your Email (optional)">
+        <input type="text" name="business_phone" placeholder="Your Phone (optional)">
+
+        <hr>
+
+        <h3>Client Info</h3>
+        <input type="text" name="client_name" placeholder="Client Name" required>
+        <input type="email" name="client_email" placeholder="Client Email">
+        <textarea name="client_address" placeholder="Client Address" rows="3" required></textarea>
+
+        <hr>
+
+        <h3>Invoice Details</h3>
+        <input type="text" name="invoice_number" placeholder="Invoice Number" required>
+        <label for="issue_date">Issue Date</label>
+        <input type="date" name="issue_date" required>
+        <label for="due_date">Due Date</label>
+        <input type="date" name="due_date" required>
+
+        <hr>
+        
+        <h3>Currency</h3>
+		<label for="currency">Select Currency:</label>
+		<select name="currency" required>
+		    <option value="R">South African Rand (R)</option>
+		    <option value="$">Dollar ($)</option>
+		    <option value="€">Euro (€)</option>
+		    <option value="£">British Pound (£)</option>
+		</select>
+
+		<hr>
+
+        <h3>Line Items (Labour)</h3>
+        <div id="line-items">
+            <div class="line-item">
+                <input type="text" name="description" placeholder="Description">
+                <input type="number" name="rate" step="0.01" placeholder="cost/hour">
+                <input type="number" name="quantity" step="0.01" placeholder="# hours">
+            </div>
+        </div>
+        <button type="button" onclick="addLineItem()">+ Add Line Item</button>
+
+        <hr>
+
+        <h3>Materials (Optional)</h3>
+        <div id="materials">
+            <div class="material-item">
+                <input type="text" name="material_description" placeholder="Material Description">
+                <input type="number" name="material_cost" step="0.01" placeholder="Cost">
+            </div>
+        </div>
+        <button type="button" onclick="addMaterial()">+ Add Material</button>
+
+        <hr>
+
+        <h3>VAT</h3>
+        <input type="number" name="vat_percentage" step="0.01" placeholder="VAT % (e.g. 15)" required>
+
+        <hr>
+
+        <h3>Bank Details (EFT)</h3>
+        <input type="text" name="bank_name" placeholder="Bank Name" required>
+        <input type="text" name="account_number" placeholder="Account Number" required>
+
+        <button type="submit">Generate & Download PDF</button>
+    </form>
+
+    <script>
+        function addLineItem() {
+            const container = document.getElementById('line-items');
+            const div = document.createElement('div');
+            div.className = 'line-item';
+            div.innerHTML = `
+                <input type="text" name="description" placeholder="Description">
+                <input type="number" name="rate" step="0.01" placeholder="Rate (R/hr)">
+                <input type="number" name="quantity" step="0.01" placeholder="# hours">
+            `;
+            container.appendChild(div);
+        }
+
+        function addMaterial() {
+            const container = document.getElementById('materials');
+            const div = document.createElement('div');
+            div.className = 'material-item';
+            div.innerHTML = `
+                <input type="text" name="material_description" placeholder="Material Description">
+                <input type="number" name="material_cost" step="0.01" placeholder="Cost (R)">
+            `;
+            container.appendChild(div);
+        }
+    </script>
+</body>
+</html>
