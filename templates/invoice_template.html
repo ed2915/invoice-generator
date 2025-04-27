@@ -71,14 +71,6 @@
             padding-top: 10px;
         }
     </style>
-    
-    <script>
-	  gtag('event', 'invoice_generated', {
-    	'event_category': 'Invoices',
-	    'event_label': '{{ data.client_name }}',
-    	'value': {{ data.total | int }}
-	  });
-	</script>
 
 </head>
 <body>
