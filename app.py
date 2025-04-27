@@ -88,11 +88,6 @@ def generate_invoice():
     # Render HTML and convert to PDF
     html_content = render_template('invoice_template.html', data=data)
     pdf_file = HTML(string=html_content).write_pdf()
-    
-    # Log usage
-    user_ip = request.remote_addr
-    logging.info(f"Invoice generated | IP: {user_ip} | Invoice #: {data['invoice_number']} | Client: {data['client_name']}")
-
 
     return send_file(BytesIO(pdf_file), as_attachment=True, download_name="invoice.pdf", mimetype='application/pdf')
 
