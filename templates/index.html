@@ -99,7 +99,7 @@
 
         <h3>Client Info</h3>
         <input type="text" name="client_name" placeholder="Client Name" required>
-        <input type="email" name="client_email" placeholder="Client Email">
+        <input type="email" name="client_email" placeholder="Client Email" required>
         <textarea name="client_address" placeholder="Client Address" rows="3" required></textarea>
 
         <hr>
@@ -152,9 +152,9 @@
 
         <hr>
 
-        <h3>Bank Details (EFT)</h3>
-        <input type="text" name="bank_name" placeholder="Bank Name" required>
-        <input type="text" name="account_number" placeholder="Account Number" required>
+        <h3>Banking Details (EFT)</h3>
+        <input type="text" name="bank_name" placeholder="Bank Name (optional)">
+        <input type="text" name="account_number" placeholder="Account Number (optional)">
 
         <button type="submit">Generate & Download PDF</button>
     </form>
@@ -183,5 +183,22 @@
             container.appendChild(div);
         }
     </script>
+    
+    <script>
+   	 document.addEventListener('DOMContentLoaded', function () {
+        const form = document.querySelector('form');
+
+        if (form) {
+            form.addEventListener('submit', function () {
+                // Show alert shortly after submission so the download isn't blocked
+                setTimeout(function () {
+                    alert("Thanks for using this free service! If you found it helpful, please spread the word.\n\nDon't close this page just yet —\nIf you spot a mistake in your invoice, simply close this message, make any changes you need, and then resubmit the form.");
+
+                }, 300);  // 300ms delay allows the download to begin
+            });
+        }
+    	});
+	</script>
+
 </body>
 </html>
