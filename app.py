@@ -22,13 +22,15 @@ def index():
 @app.route('/generate_invoice', methods=['POST'])
 def generate_invoice():
     data = {
+        'document_type': request.form.get('document_type', 'Invoice'),
         'business_name': request.form.get('business_name'),
         'business_email': request.form.get('business_email'),
         'business_phone': request.form.get('business_phone'),
         'currency': request.form.get('currency', 'R'),
+        'document_number': request.form.get('invoice_number'),
         'invoice_number': request.form.get('invoice_number'),
         'issue_date': request.form.get('issue_date'),
-        'due_date': request.form.get('due_date'),
+        #'due_date': request.form.get('due_date'),
         'client_name': request.form.get('client_name'),
         'client_email': request.form.get('client_email'),
         'client_address': request.form.get('client_address'),

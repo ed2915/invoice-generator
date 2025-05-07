@@ -1,20 +1,19 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
-
-	<!-- Google tag (gtag.js) -->
-	<script async src="https://www.googletagmanager.com/gtag/js?id=G-5Q1L6DR24L"></script>
-	<script>
+<!-- Google tag (gtag.js) -->
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-5Q1L6DR24L"></script>
+<script>
 	  window.dataLayer = window.dataLayer || [];
 	  function gtag(){dataLayer.push(arguments);}
 	  gtag('js', new Date());
 
 	  gtag('config', 'G-5Q1L6DR24L');
 	</script>
-	
-    <meta charset="UTF-8">
-    <title>Invoice Generator</title>
-    <style>
+<meta charset="utf-8"/>
+<title>Invoice Generator</title>
+<style>
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background-color: #f8f9fa;
@@ -85,81 +84,74 @@
             margin: 30px 0;
         }
     </style>
-
 </head>
 <body>
-    <h1>Create Invoice</h1>
-    <form action="/generate_invoice" method="POST">
-        <h3>Business Info</h3>
-        <input type="text" name="business_name" placeholder="Your Business Name" required>
-        <input type="email" name="business_email" placeholder="Your Email (optional)">
-        <input type="text" name="business_phone" placeholder="Your Phone (optional)">
+<h1>Create a quote or invoice</h1>
+<form action="/generate_invoice" method="POST">
+<div class="form-group">
+<label for="document_type"><strong>Document Type:</strong></label>
+<select id="document_type" name="document_type" required="">
+<option selected="" value="Invoice">Invoice</option>
+<option value="Quote">Quote</option>
+</select>
+</div>
+<hr/>
 
-        <hr>
-
-        <h3>Client Info</h3>
-        <input type="text" name="client_name" placeholder="Client Name" required>
-        <input type="email" name="client_email" placeholder="Client Email" required>
-        <textarea name="client_address" placeholder="Client Address" rows="3" required></textarea>
-
-        <hr>
-
-        <h3>Invoice Details</h3>
-        <input type="text" name="invoice_number" placeholder="Invoice Number" required>
-        <label for="issue_date">Issue Date</label>
-        <input type="date" name="issue_date" required>
-        <label for="due_date">Due Date</label>
-        <input type="date" name="due_date" required>
-
-        <hr>
-        
-        <h3>Currency</h3>
-		<label for="currency">Select Currency:</label>
-		<select name="currency" required>
-		    <option value="R">South African Rand (R)</option>
-		    <option value="$">Dollar ($)</option>
-		    <option value="€">Euro (€)</option>
-		    <option value="£">British Pound (£)</option>
-		</select>
-
-		<hr>
-
-        <h3>Line Items (Labour)</h3>
-        <div id="line-items">
-            <div class="line-item">
-                <input type="text" name="description" placeholder="Description">
-                <input type="number" name="rate" step="0.01" placeholder="cost/hour">
-                <input type="number" name="quantity" step="0.01" placeholder="# hours">
-            </div>
-        </div>
-        <button type="button" onclick="addLineItem()">+ Add Line Item</button>
-
-        <hr>
-
-        <h3>Materials (Optional)</h3>
-        <div id="materials">
-            <div class="material-item">
-                <input type="text" name="material_description" placeholder="Material Description">
-                <input type="number" name="material_cost" step="0.01" placeholder="Cost">
-            </div>
-        </div>
-        <button type="button" onclick="addMaterial()">+ Add Material</button>
-
-        <hr>
-
-        <h3>VAT</h3>
-        <input type="number" name="vat_percentage" step="0.01" placeholder="VAT % (e.g. 15)" required>
-
-        <hr>
-
-        <h3>Banking Details (EFT)</h3>
-        <input type="text" name="bank_name" placeholder="Bank Name (optional)">
-        <input type="text" name="account_number" placeholder="Account Number (optional)">
-
-        <button type="submit">Generate & Download PDF</button>
-    </form>
-
-    <script>
+<h3>Business Info</h3>
+<input name="business_name" placeholder="Your Business Name" required="" type="text"/>
+<input name="business_email" placeholder="Your Email (optional)" type="email"/>
+<input name="business_phone" placeholder="Your Phone (optional)" type="text"/>
+<hr/>
+<h3>Client Info</h3>
+<input name="client_name" placeholder="Client Name" required="" type="text"/>
+<input name="client_email" placeholder="Client Email" required="" type="email"/>
+<input name="client_address" placeholder="Client Address" type="text"/>
+<!--<textarea name="client_address" placeholder="Client Address" rows="3" required></textarea>-->
+<hr/>
+<h3>Quote/Invoice Details</h3>
+<input name="invoice_number" placeholder="Quote/Invoice Number" required="" type="text"/>
+<label for="issue_date">Issue Date</label>
+<input name="issue_date" required="" type="date"/>
+<!--<label for="due_date">Due Date</label>-->
+<!--<input name="due_date" required="" type="date"/>-->
+<hr/>
+<h3>Currency</h3>
+<label for="currency">Select Currency:</label>
+<select name="currency" required="">
+<option value="R">South African Rand (R)</option>
+<option value="$">Dollar ($)</option>
+<option value="€">Euro (€)</option>
+<option value="£">British Pound (£)</option>
+</select>
+<hr/>
+<h3>Line Items (Labour)</h3>
+<div id="line-items">
+<div class="line-item">
+<input name="description" placeholder="Description" type="text"/>
+<input name="rate" placeholder="cost/hour" step="0.01" type="number"/>
+<input name="quantity" placeholder="# hours" step="0.01" type="number"/>
+</div>
+</div>
+<button onclick="addLineItem()" type="button">+ Add Line Item</button>
+<hr/>
+<h3>Materials (Optional)</h3>
+<div id="materials">
+<div class="material-item">
+<input name="material_description" placeholder="Material Description" type="text"/>
+<input name="material_cost" placeholder="Cost" step="0.01" type="number"/>
+</div>
+</div>
+<button onclick="addMaterial()" type="button">+ Add Material</button>
+<hr/>
+<h3>VAT</h3>
+<input name="vat_percentage" placeholder="VAT % (e.g. 15)" required="" step="0.01" type="number"/>
+<hr/>
+<h3>Banking Details (EFT)</h3>
+<input name="bank_name" placeholder="Bank Name (optional)" type="text"/>
+<input name="account_number" placeholder="Account Number (optional)" type="text"/>
+<button type="submit">Generate &amp; Download PDF</button>
+</form>
+<script>
         function addLineItem() {
             const container = document.getElementById('line-items');
             const div = document.createElement('div');
@@ -183,8 +175,7 @@
             container.appendChild(div);
         }
     </script>
-    
-    <script>
+<script>
    	 document.addEventListener('DOMContentLoaded', function () {
         const form = document.querySelector('form');
 
@@ -199,6 +190,5 @@
         }
     	});
 	</script>
-
 </body>
 </html>

@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Invoice</title>
+    <title>{{ data.document_type }}</title>
     <style>
         body {
             font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
@@ -83,10 +83,10 @@
     </div>
 
     <div class="section">
-        <h2>Invoice Details</h2>
-        <p><strong>Invoice Number:</strong> {{ data.invoice_number }}</p>
+        <h2>{{ data.document_type }} Details</h2>
+        <p><strong>{{ data.document_type }} Number:</strong> {{ data.invoice_number }}</p>
         <p><strong>Issue Date:</strong> {{ data.issue_date }}</p>
-        <p><strong>Due Date:</strong> {{ data.due_date }}</p>
+        <!--<p><strong>Due Date:</strong> {{ data.due_date }}</p> -->
     </div>
 
     <div class="section">
@@ -144,7 +144,7 @@
 
     <div class="section" style="page-break-before: always;">
     <!--	<div class="section"> -->
-        <h2>Invoice Summary</h2>
+        <h2>{{ data.document_type }} Summary</h2>
         <table>
             <tr>
                 <td style="width: 85%;"><strong>Line Items subtotal</strong></td>

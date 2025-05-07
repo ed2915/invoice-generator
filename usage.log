@@ -1,0 +1,64 @@
+2025-05-07 19:55:31,019 - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-05-07 19:55:31,019 - [33mPress CTRL+C to quit[0m
+2025-05-07 19:55:31,019 -  * Restarting with stat
+2025-05-07 19:55:31,324 -  * Debugger is active!
+2025-05-07 19:55:31,331 -  * Debugger PIN: 949-919-513
+2025-05-07 19:55:40,156 - 127.0.0.1 - - [07/May/2025 19:55:40] "GET / HTTP/1.1" 200 -
+2025-05-07 19:55:40,674 - 127.0.0.1 - - [07/May/2025 19:55:40] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-05-07 19:55:40,676 - 127.0.0.1 - - [07/May/2025 19:55:40] "[33mGET /apple-touch-icon-precomposed.png HTTP/1.1[0m" 404 -
+2025-05-07 19:55:40,681 - 127.0.0.1 - - [07/May/2025 19:55:40] "[33mGET /apple-touch-icon.png HTTP/1.1[0m" 404 -
+2025-05-07 20:03:54,785 -  * Detected change in '/Users/ed/Desktop/invoice_generator/scripts/app.py', reloading
+2025-05-07 20:03:54,841 -  * Restarting with stat
+2025-05-07 20:03:55,247 -  * Debugger is active!
+2025-05-07 20:03:55,252 -  * Debugger PIN: 949-919-513
+2025-05-07 20:04:04,922 - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-05-07 20:04:04,922 - [33mPress CTRL+C to quit[0m
+2025-05-07 20:04:04,923 -  * Restarting with stat
+2025-05-07 20:04:05,228 -  * Debugger is active!
+2025-05-07 20:04:05,233 -  * Debugger PIN: 949-919-513
+2025-05-07 20:04:15,164 - 127.0.0.1 - - [07/May/2025 20:04:15] "GET / HTTP/1.1" 200 -
+2025-05-07 20:04:54,544 - 127.0.0.1 - - [07/May/2025 20:04:54] "POST /generate_invoice HTTP/1.1" 200 -
+2025-05-07 20:08:23,515 - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-05-07 20:08:23,515 - [33mPress CTRL+C to quit[0m
+2025-05-07 20:08:23,516 -  * Restarting with stat
+2025-05-07 20:08:23,822 -  * Debugger is active!
+2025-05-07 20:08:23,827 -  * Debugger PIN: 949-919-513
+2025-05-07 20:08:31,227 - 127.0.0.1 - - [07/May/2025 20:08:31] "GET / HTTP/1.1" 200 -
+2025-05-07 20:08:40,310 - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-05-07 20:08:40,311 - [33mPress CTRL+C to quit[0m
+2025-05-07 20:08:40,311 -  * Restarting with stat
+2025-05-07 20:08:40,614 -  * Debugger is active!
+2025-05-07 20:08:40,618 -  * Debugger PIN: 949-919-513
+2025-05-07 20:08:46,337 - 127.0.0.1 - - [07/May/2025 20:08:46] "GET / HTTP/1.1" 200 -
+2025-05-07 20:10:44,418 - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-05-07 20:10:44,418 - [33mPress CTRL+C to quit[0m
+2025-05-07 20:10:44,419 -  * Restarting with stat
+2025-05-07 20:10:44,727 -  * Debugger is active!
+2025-05-07 20:10:44,732 -  * Debugger PIN: 949-919-513
+2025-05-07 20:10:51,634 - 127.0.0.1 - - [07/May/2025 20:10:51] "GET / HTTP/1.1" 200 -
+2025-05-07 20:12:59,191 - 127.0.0.1 - - [07/May/2025 20:12:59] "POST /generate_invoice HTTP/1.1" 200 -
+2025-05-07 20:14:19,784 -  * Detected change in '/Users/ed/Desktop/invoice_generator/scripts/app.py', reloading
+2025-05-07 20:14:19,859 -  * Restarting with stat
+2025-05-07 20:14:20,256 -  * Debugger is active!
+2025-05-07 20:14:20,262 -  * Debugger PIN: 949-919-513
+2025-05-07 20:15:31,767 - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-05-07 20:15:31,767 - [33mPress CTRL+C to quit[0m
+2025-05-07 20:15:31,767 -  * Restarting with stat
+2025-05-07 20:15:32,075 -  * Debugger is active!
+2025-05-07 20:15:32,080 -  * Debugger PIN: 949-919-513
+2025-05-07 20:15:37,869 - 127.0.0.1 - - [07/May/2025 20:15:37] "GET / HTTP/1.1" 200 -
+2025-05-07 20:16:42,218 - 127.0.0.1 - - [07/May/2025 20:16:42] "POST /generate_invoice HTTP/1.1" 200 -
+2025-05-07 20:17:40,226 - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-05-07 20:17:40,227 - [33mPress CTRL+C to quit[0m
+2025-05-07 20:17:40,227 -  * Restarting with stat
+2025-05-07 20:17:40,531 -  * Debugger is active!
+2025-05-07 20:17:40,536 -  * Debugger PIN: 949-919-513
+2025-05-07 20:17:45,725 - 127.0.0.1 - - [07/May/2025 20:17:45] "GET / HTTP/1.1" 200 -
+2025-05-07 20:18:07,809 - 127.0.0.1 - - [07/May/2025 20:18:07] "POST /generate_invoice HTTP/1.1" 200 -
